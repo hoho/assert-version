@@ -1,0 +1,33 @@
+{
+    "name": "assert-version",
+    "version": "0.0.0",
+    "description": "Check if version mentions match the one from package.json",
+    "main": "assert-version.js",
+    "directories": {
+        "test": "test",
+        "bin": "bin"
+    },
+    "bin": {
+        "devserve": "bin/assert-version"
+    },
+    "scripts": {
+        "test": "mocha"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/hoho/assert-version.git"
+    },
+    "author": "Marat Abdullin <dakota@brokenpipe.ru>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/hoho/assert-version/issues"
+    },
+    "dependencies": {
+        "commander": "~2.3.0",
+        "colors": "~0.6.2"
+    },
+    "devDependencies": {
+        "mocha": "1.21.4",
+        "should": "4.0.4"
+    }
+}
