@@ -39,12 +39,12 @@ var error = assertVersion({
     'other3.js': [matcher1, matcher2] // If you need to check more than one place in file.
 });
 
+// `error` will have error message in case of error, `undefined` otherwise.
+```
+
 Optionally, you can pass path to `package.json` with reference version as
 second argument of `assertVersion()`. It is `package.json` from current
 working directory by default.
-
-// `error` will have error message in case of error, `undefined` otherwise.
-```
 
 
 ## Use as command line tool
