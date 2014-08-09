@@ -54,3 +54,44 @@ Same to previous example (except for function extractor):
 ```
 assert-version -f bower.json -f mylib.js -f other.js='version=([^,]+)' -f other3.js=matcher1 -f other3.js=matcher2
 ```
+
+
+## Example (Gulp task)
+
+Example from https://github.com/hoho/conkitty-route/blob/master/gulpfile.js.
+
+```js
+gulp.task('assert-version', ['uglify'], function(err) {
+    var assertVersion = require('assert-version');
+
+    err(assertVersion({
+        'croute.js': '',
+        'croute.min.js': '',
+        'bower.json': ''
+    }));
+});
+
+```
+
+
+## Example (Grunt task)
+
+Example from https://github.com/hoho/concat.js/blob/master/Gruntfile.js.
+
+```js
+grunt.registerTask('assert-version', function() {
+    var assertVersion = require('assert-version'),
+        error;
+
+    error = assertVersion({
+        'concat.js': '',
+        'concat.min.js': '',
+        'bower.json': ''
+    });
+
+    if (error) {
+        grunt.log.error(error);
+        return false;
+    }
+});
+```
