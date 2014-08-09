@@ -5,15 +5,20 @@
 
 function addfile(val, memo) {
     val = val.split(/\s*=\s*/, 2);
-    memo[val[0]] = val[1];
+    var cur;
+    if (!((cur = memo[val[0]]))) {
+        cur = memo[val[0]] = [];
+    }
+    cur.push(val[1]);
     return memo;
 }
 
 
-var assertVer = require('../assert-version'),
-    fs = require('fs'),
-    path = require('path'),
-    program = require('commander');
+var assertVer = require('../assert-version');
+var fs = require('fs');
+var path = require('path');
+var program = require('commander');
+require('colors');
 
 var packageJSON = path.join(path.dirname(require.resolve('../assert-version')), 'package.json'),
     files = {};
@@ -22,10 +27,22 @@ var packageJSON = path.join(path.dirname(require.resolve('../assert-version')), 
 program
     .version(JSON.parse(fs.readFileSync(packageJSON, {encoding: 'utf8'})).version)
     .usage('[options]')
-    .option('-f, --file <path>=<regexp>', 'File to check', addfile, files)
+    .option('-f, --file <path>[=<regexp>]', 'File to check', addfile, files)
     .option('-p, --package <path>', 'Path to package.json')
-    .option('-u, --update', 'Update versions (might be harmful)')
     .parse(process.argv);
 
 
-assertVer(files, program.package, 'update' in program);
+if (Object.keys(files).length === 0) {
+    console.log('No files specified'.red);
+    process.exit(1);
+}
+
+
+var ret = assertVer(files, program.package);
+
+if (ret) {
+    console.log(ret.red);
+    process.exit(1);
+} else {
+    console.log('Version matches'.green);
+}
