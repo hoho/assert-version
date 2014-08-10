@@ -61,12 +61,11 @@ assert-version -f bower.json -f mylib.js -f other.js='version=([^,]+)' -f other3
 Example from https://github.com/hoho/conkitty-route/blob/master/gulpfile.js.
 
 ```js
-gulp.task('assert-version', ['uglify'], function(err) {
+gulp.task('assert-version', function(err) {
     var assertVersion = require('assert-version');
 
     err(assertVersion({
         'croute.js': '',
-        'croute.min.js': '',
         'bower.json': ''
     }));
 });
@@ -85,7 +84,6 @@ grunt.registerTask('assert-version', function() {
 
     error = assertVersion({
         'concat.js': '',
-        'concat.min.js': '',
         'bower.json': ''
     });
 
