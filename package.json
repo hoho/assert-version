@@ -1,6 +1,6 @@
 {
     "name": "assert-version",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Check if version mentions match the one from package.json",
     "main": "assert-version.js",
     "directories": {

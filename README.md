@@ -21,6 +21,8 @@ There are two default regular expressions. If your file has `.json` extension,
 expressions are not great, they just seem to work for my cases. Feel free to
 send improvements.
 
+Extracted version should be valid semver version.
+
 
 ## Use as Node.js module
 

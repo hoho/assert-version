@@ -56,6 +56,11 @@ module.exports = function assertVersion(files, jsonPath) {
                 }
             }
 
+            ver = semver.valid(ver);
+            if (!ver) {
+                return format('Invalid version extracted from `%s`', file);
+            }
+
             if (ver !== version) {
                 return format('Version mismatch (`%s` !== `%s` in `%s`)', ver, version, file);
             }
