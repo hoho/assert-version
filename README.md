@@ -1,6 +1,9 @@
 # assert-version
 
-Check if version mentions match the one from package.json
+Check if version mentions match the one from package.json. Sometimes you have
+version in more than one place (for example, in your JavaScript file head, in
+bower.json and in package.json itself). This module checks if all these
+versions are the same.
 
 
 ## Install
